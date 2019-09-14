@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::Resource('/Rekening1','Rekening1Controller');
+Route::Resource('/rekening1','Rekening1Controller');
 

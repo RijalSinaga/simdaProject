@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\ref_rek_1;
 
 class Rekening1Controller extends Controller
 {
@@ -13,7 +14,8 @@ class Rekening1Controller extends Controller
      */
     public function index()
     {
-        return view('rekening1.index');
+        $rek1=ref_rek_1::all();
+        return view('rekening1.index', compact('rek1'));
     }
 
     /**
