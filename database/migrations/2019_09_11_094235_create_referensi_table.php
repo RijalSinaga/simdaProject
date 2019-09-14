@@ -11,14 +11,14 @@ class CreateReferensiTable extends Migration
         
         Schema::create('ref_tahun', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('tahun');
+            $table->string('tahun');
             $table->timestamps();
         });
         
         Schema::create('ref_rek_1', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('kd_rek_1')->unique();
-            $table->integer('nm_rek_1');
+            $table->unsignedInteger('kd_rek_1')->unique();
+            $table->string('nm_rek_1');
             $table->timestamps();
         });
 
