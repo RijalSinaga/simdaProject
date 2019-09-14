@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,12 +10,6 @@
 <body>
 
   <div class="container">
-    @if (session('success'))
-    <div class="alert alert-info" role="alert">
-        {{ session ('success') }}
-    </div>
-    @endif
-    
     <div class="row">
       <div class="col-6">
           <h1>Rekening 1</h1><br>
@@ -57,8 +51,8 @@
         </div>
         <div class="modal-body">
           
-            <form action="/rekening1/create" method="GET">
-              {{-- {{ csrf_token() }} --}}
+            <form action="/rekening1/create" method="get">
+              {{ csrf_token() }}
                 <div class="form-group">
                   <label for="exampleInputEmail1">Kode Rekening</label>
                   <input type="text" name="kd_rek_1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kode Rekening">
@@ -83,4 +77,4 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </tbody>
 </body>
-</html>
+</html> --}}

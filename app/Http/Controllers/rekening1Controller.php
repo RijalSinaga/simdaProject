@@ -17,15 +17,19 @@ class Rekening1Controller extends Controller
         $rek1=ref_rek_1::all();
         return view('rekening1.index', compact('rek1'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // $rek1=ref_rek_1::all();
+        \App\ref_rek_1::create($request->all());
+        return redirect('/rekening1')->with('success','Data success added!!');
+        // return $request->all();
+        // return view('rekening1.create', compact('rek1'));
     }
 
     /**
