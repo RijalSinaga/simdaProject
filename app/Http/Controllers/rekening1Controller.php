@@ -7,9 +7,14 @@ use \App\ref_rek_1;
 
 class Rekening1Controller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $rek1=ref_rek_1::all();
+        if ($request->has('cari')) {
+            $rek1=ref_rek_1::where('kd_rek_1','LIKE','%'.$request->cari. '%')->get();
+            $rek1=ref_rek_1::where('nm_rek_1','LIKE','%'.$request->cari. '%')->get();
+        }else{
+            $rek1=ref_rek_1::all();
+        }
         return view('rekening1.index', compact('rek1'));
     }
 
@@ -37,27 +42,22 @@ class Rekening1Controller extends Controller
     public function edit($id)
     {
         $rek1 = ref_rek_1::find($id);
-        // {{ dd($rek1); }}
         return view('rekening1.edit', ['rek1'=>$rek1]);
     }
 
    
     public function update(Request $request, $id)
     {
-        $rek1=ref_rek_1::where('id',$rek1->id)
-        -> update ([
-            'kd_rek_1' => $request -> kd_rek_1,
-            'nm_rek_1' => $request -> nm_rek_1
-        ]);
-
-        // $rek1=ref_rek_1::find($id);
-        // $rek1->update($request->all());
+        $rek1=ref_rek_1::find($id);
+        $rek1->update($request->all());
         return redirect('/rekening1')->with('success','Data success updated!!');
     }
-
-  
-    public function destroy($id)
+    
+    
+    public function delete($id)
     {
-        delete();
+        $rek1=ref_rek_1::find($id);
+        $rek1->delete($rek1);
+        return redirect('/rekening1')->with('success','Data Deleted!!');
     }
 }

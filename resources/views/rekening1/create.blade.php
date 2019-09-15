@@ -51,7 +51,7 @@
         </div>
         <div class="modal-body">
           
-            <form action="/rekening1/create" method="get">
+        <form action="/rekening1/{rekening1}/edit" method="get">
               {{ csrf_token() }}
                 <div class="form-group">
                   <label for="exampleInputEmail1">Kode Rekening</label>
