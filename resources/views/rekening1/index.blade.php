@@ -33,12 +33,18 @@
       <tr>
         <th>Kode Rekening</th>
         <th>Nama Rekening</th>
+        <th>
+          <td>aksi</td>
+        </th>
       </tr>
     
       @foreach ($rek1 as $key =>$rek)
       <tr>
         <td>{{$rek->kd_rek_1}}</td>
         <td>{{$rek->nm_rek_1}}</td>
+        <td>
+            <td><a href="">edit</a></td>
+        </td>
       </tr>
       @endforeach
     </table>
