@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 // Route::get('/rekening1','Rekening1Controller@index');
 // Route::get('/rekening1/create','rekening1Controller@create');
+// Route::post('/rekening1/{{$rek1->id}}/edit','rekening1Controller@edit');
+// Route::post('/rekening1/{{$rek1->id}}/update','rekening1Controller@update');
 
 Route::Resource('/rekening1','Rekening1Controller');
 

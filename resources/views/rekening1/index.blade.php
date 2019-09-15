@@ -33,17 +33,16 @@
       <tr>
         <th>Kode Rekening</th>
         <th>Nama Rekening</th>
-        <th>
-          <td>aksi</td>
-        </th>
+        <th>AKSI</th>
       </tr>
     
-      @foreach ($rek1 as $key =>$rek)
+      @foreach ($rek1 as $key =>$rek1)
       <tr>
-        <td>{{$rek->kd_rek_1}}</td>
-        <td>{{$rek->nm_rek_1}}</td>
+        <td>{{$rek1->kd_rek_1}}</td>
+        <td>{{$rek1->nm_rek_1}}</td>
         <td>
-            <td><a href="">edit</a></td>
+        <a href="/rekening1/{{$rek1->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+          <a href="/rekening1/delete" class="btn btn-danger btn-sm">Delete</a>
         </td>
       </tr>
       @endforeach
@@ -64,8 +63,8 @@
         <div class="modal-body">
           
             <form action="/rekening1/create" method="GET">
-              {{-- {{ csrf_token() }} --}}
-                <div class="form-group">
+              @csrf
+              <div class="form-group">
                   <label for="exampleInputEmail1">Kode Rekening</label>
                   <input type="text" name="kd_rek_1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kode Rekening">
                 </div>
