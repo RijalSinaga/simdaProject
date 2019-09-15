@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Auth Controller
+Route::get('/login','AuthController@login');
+Route::post('/postlogin','AuthController@postlogin');
+
+// Dashboard Controller
+Route::get('/dashboard', 'DashboardController@index');
+
+// Rekening1 Controller
 Route::get('/rekening1', 'Rekening1Controller@index');
 Route::post('/rekening1/create', 'rekening1Controller@create');
 Route::get('/rekening1/{id}/edit', 'rekening1Controller@edit');
