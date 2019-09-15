@@ -16,18 +16,22 @@ Route::get('/', function () {
 });
 
 // Auth Controller
-Route::get('/login','AuthController@login');
+Route::get('/login','AuthController@login')->name('login');
 Route::post('/postlogin','AuthController@postlogin');
+Route::get('/logout','AuthController@logout');
 
-// Dashboard Controller
-Route::get('/dashboard', 'DashboardController@index');
+// Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+// Route::get('/rekening1', 'rekening1Controller@index')->middleware('auth');
+// Route::post('/rekening1/create', 'rekening1Controller@create')->middleware('auth');
+// Route::get('/rekening1/{id}/edit', 'rekening1Controller@edit')->middleware('auth');
+// Route::post('/rekening1/{id}/update', 'rekening1Controller@update')->middleware('auth');
+// Route::get('/rekening1/{id}/delete', 'rekening1Controller@delete')->middleware('auth');
 
-// Rekening1 Controller
-Route::get('/rekening1', 'Rekening1Controller@index');
-Route::post('/rekening1/create', 'rekening1Controller@create');
-Route::get('/rekening1/{id}/edit', 'rekening1Controller@edit');
-Route::post('/rekening1/{id}/update', 'rekening1Controller@update');
-Route::get('/rekening1/{id}/delete', 'rekening1Controller@delete');
-
-// Route::Resource('/rekening1','Rekening1Controller');
-
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/rekening1', 'rekening1Controller@index');
+    Route::post('/rekening1/create', 'rekening1Controller@create');
+    Route::get('/rekening1/{id}/edit', 'rekening1Controller@edit');
+    Route::post('/rekening1/{id}/update', 'rekening1Controller@update');
+    Route::get('/rekening1/{id}/delete', 'rekening1Controller@delete');
+});
