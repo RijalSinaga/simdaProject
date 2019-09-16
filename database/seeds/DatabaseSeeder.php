@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ref_rek_1Seeder::class);
         $this->call(ref_rek_2Seeder::class);
         $this->call(ref_rek_3Seeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }

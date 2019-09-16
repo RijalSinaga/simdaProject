@@ -15,6 +15,7 @@ class AddingColumnInUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar',255)->nullable;
+            $table->integer('role')->nullable;
         });
     }
 
@@ -26,7 +27,7 @@ class AddingColumnInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('users');
         });
     }
 }
