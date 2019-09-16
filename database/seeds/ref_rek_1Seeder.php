@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use \App\Rekening1;
+use \App\ref_rek_1;
+
 class ref_rek_1Seeder extends Seeder
 {
     /**
@@ -11,7 +12,7 @@ class ref_rek_1Seeder extends Seeder
      */
     public function run()
     {
-        Rekening1::insert
+        ref_rek_1::insert
         ([
             [
                 'kd_rek_1'=>'1',

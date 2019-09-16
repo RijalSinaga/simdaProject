@@ -14,6 +14,12 @@ class CreateReferensiTable extends Migration
             $table->string('tahun');
             $table->timestamps();
         });
+
+        Schema::create('ref_bulan', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('bulan');
+            $table->timestamps();
+        });
         
         Schema::create('ref_rek_1', function (Blueprint $table) {
             $table->Increments('id');
@@ -28,7 +34,6 @@ class CreateReferensiTable extends Migration
             $table->string('kd_rek_1')->index();
             $table->string('kd_rek_2')->index();
             $table->string('nm_rek_2');
-            $table->foreign('id_ref_rek_1')->references('id')->on('ref_rek_1');
             $table->timestamps();
         });
 
@@ -39,7 +44,7 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_2')->index();
             $table->integer('kd_rek_3')->index();
             $table->string('nm_rek_3');
-            $table->foreign('id_ref_rek_2')->references('id')->on('ref_rek_2');
+            $table->string('saldonorm');
             $table->timestamps();
         });
 
@@ -51,7 +56,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_3')->index();
             $table->integer('kd_rek_4')->index();
             $table->string('nm_rek_4');
-            $table->foreign('id_ref_rek_3')->references('id')->on('ref_rek_3');
             $table->timestamps();
         });
 
@@ -64,7 +68,7 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_4')->index();
             $table->integer('kd_rek_5')->index();
             $table->string('nm_rek_5');
-            $table->foreign('id_ref_rek_4')->references('id')->on('ref_rek_4');
+            $table->string('peraturan');
             $table->timestamps();
         });
         
@@ -88,7 +92,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_bidang');
             $table->string('nm_bidang');
             $table->integer('kd_fungsi');
-            $table->foreign('id_ref_urusan')->references('id')->on('ref_urusan');
             $table->timestamps();
         });
             
@@ -99,7 +102,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_bidang');
             $table->integer('kd_prog');
             $table->string('ket_program');
-            $table->foreign('id_ref_urusan')->references('id')->on('ref_urusan');
             $table->timestamps();
         });
         
@@ -112,8 +114,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_prog');
             $table->integer('kd_keg');
             $table->string('ket_kegiatan');
-            $table->foreign('id_ref_program')->references('id')->on('ref_program');
-            $table->foreign('id_ref_bidang')->references('id')->on('ref_bidang');
             $table->timestamps();
         });
         
@@ -142,8 +142,6 @@ class CreateReferensiTable extends Migration
             $table->string('pagu_anggaran');
             $table->string('waktu_pelaksanaan');
             $table->integer('kd_sumber');
-            $table->foreign('id_ref_tahun')->references('id')->on('ref_tahun');
-            $table->foreign('id_ref_sumber_dana')->references('id')->on('ref_sumber_dana');
             $table->timestamps();
         });
         
@@ -154,7 +152,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_bidang');
             $table->integer('kd_unit');
             $table->string('nm_unit');
-            $table->foreign('id_ref_bidang')->references('id')->on('ref_bidang');
             $table->timestamps();
         });
         
@@ -166,7 +163,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_unit');
             $table->integer('kd_sub');
             $table->string('nm_sub_unit');
-            $table->foreign('id_ref_unit')->references('id')->on('ref_unit');
             $table->timestamps();
         });
 
@@ -183,7 +179,6 @@ class CreateReferensiTable extends Migration
             $table->string('jbt_pimpinan');
             $table->string('alamat');
             $table->string('ur_visi');
-            $table->foreign('id_ref_sub_unit')->references('id')->on('ref_sub_unit');
             $table->timestamps();
         });
 
@@ -205,8 +200,6 @@ class CreateReferensiTable extends Migration
             $table->integer('nip_penandatagan');
             $table->string('jbt_penandatangan');
             $table->integer('kd_edit');
-            $table->foreign('id_ref_editdata')->references('id')->on('ref_editdata');
-            $table->foreign('id_ta_sub_unit')->references('id')->on('ta_sub_unit');
             $table->timestamps();
         });
         
@@ -231,9 +224,6 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_4');
             $table->integer('kd_rek_5');
             $table->integer('nilai');
-            $table->foreign('id_ref_rek_5')->references('id')->on('ref_rek_5');
-            $table->foreign('id_ta_kegiatan')->references('id')->on('ta_kegiatan');
-            $table->foreign('id_ta_spd')->references('id')->on('ta_spd');
             $table->timestamps();
         });      
         
@@ -250,7 +240,6 @@ class CreateReferensiTable extends Migration
             $table->integer('nip_penandatangan');
             $table->string('jbt_penandatangan');
             $table->string('jns_dokumen');
-            $table->foreign('id_ta_sub_unit')->references('id')->on('ta_sub_unit');
             $table->timestamps();
         });
 
@@ -266,7 +255,6 @@ class CreateReferensiTable extends Migration
             $table->string('tgl_dpa');
             $table->integer('no_-dppa');
             $table->string('tgl_dppa');
-            $table->foreign('id_ta_sub_unit')->references('id')->on('ta_sub_unit');
             $table->timestamps();
         });
         
