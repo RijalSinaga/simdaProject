@@ -17,7 +17,7 @@ class CreateReferensiTable extends Migration
         
         Schema::create('ref_rek_1', function (Blueprint $table) {
             $table->Increments('id');
-            $table->unsignedInteger('kd_rek_1')->unique();
+            $table->unsignedInteger('kd_rek_1')->index();
             $table->string('nm_rek_1');
             $table->timestamps();
         });
@@ -26,7 +26,7 @@ class CreateReferensiTable extends Migration
             $table->Increments('id');
             $table->unsignedInteger('id_ref_rek_1')->nullable();
             $table->string('kd_rek_1')->index();
-            $table->string('kd_rek_2')->unique();
+            $table->string('kd_rek_2')->index();
             $table->string('nm_rek_2');
             $table->foreign('id_ref_rek_1')->references('id')->on('ref_rek_1');
             $table->timestamps();
@@ -37,7 +37,7 @@ class CreateReferensiTable extends Migration
             $table->unsignedinteger('id_ref_rek_2')->nullable();
             $table->integer('kd_rek_1')->index();
             $table->integer('kd_rek_2')->index();
-            $table->integer('kd_rek_3')->unique();
+            $table->integer('kd_rek_3')->index();
             $table->string('nm_rek_3');
             $table->foreign('id_ref_rek_2')->references('id')->on('ref_rek_2');
             $table->timestamps();
@@ -49,7 +49,7 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_1')->index();
             $table->integer('kd_rek_2')->index();
             $table->integer('kd_rek_3')->index();
-            $table->integer('kd_rek_4')->unique();
+            $table->integer('kd_rek_4')->index();
             $table->string('nm_rek_4');
             $table->foreign('id_ref_rek_3')->references('id')->on('ref_rek_3');
             $table->timestamps();
@@ -62,7 +62,7 @@ class CreateReferensiTable extends Migration
             $table->integer('kd_rek_2')->index();
             $table->integer('kd_rek_3')->index();
             $table->integer('kd_rek_4')->index();
-            $table->integer('kd_rek_5')->unique();
+            $table->integer('kd_rek_5')->index();
             $table->string('nm_rek_5');
             $table->foreign('id_ref_rek_4')->references('id')->on('ref_rek_4');
             $table->timestamps();
@@ -80,7 +80,7 @@ class CreateReferensiTable extends Migration
             $table->string('nm_urusan');
             $table->timestamps();
         });
-               
+        
         Schema::create('ref_bidang', function (Blueprint $table) {
             $table->Increments('id');
             $table->unsignedInteger('id_ref_urusan')->nullable();
@@ -146,7 +146,7 @@ class CreateReferensiTable extends Migration
             $table->foreign('id_ref_sumber_dana')->references('id')->on('ref_sumber_dana');
             $table->timestamps();
         });
-         
+        
         Schema::create('ref_unit', function (Blueprint $table) {
             $table->Increments('id');
             $table->unsignedInteger('id_ref_bidang')->nullable();
@@ -209,7 +209,7 @@ class CreateReferensiTable extends Migration
             $table->foreign('id_ta_sub_unit')->references('id')->on('ta_sub_unit');
             $table->timestamps();
         });
-
+        
         Schema::create('ta_spd_rinc', function (Blueprint $table) {
             $table->Increments('id');
             $table->unsignedInteger('id_ref_rek_5')->nullable();
