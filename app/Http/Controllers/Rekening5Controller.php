@@ -10,14 +10,11 @@ class Rekening5Controller extends Controller
 {
     public function index(Request $request)
     {
-        // if ($request->has('cari')) {
-        //     $rek5=ref_rek_5::where('kd_rek_1','LIKE','%'.$request->cari. '%')->get();
-        //     $rek5=ref_rek_5::where('nm_rek_1','LIKE','%'.$request->cari. '%')->get();
-        // }else{
-        //     // $rek5=ref_rek_5::paginate(10);
-        // }
-        // $rek5 = DB::table('ref_rek_5')->paginate(10);
-        $rek5 = ref_rek_5::all()->paginate(5);
+        if ($request->has('cari')) {
+            $rek5=ref_rek_5::where('nm_rek_5','LIKE','%'.$request->cari. '%')->paginate();
+        }else{
+            $rek5=ref_rek_5::paginate(10);
+        }
         return view('rekening5.index', compact('rek5'));
     }
 
